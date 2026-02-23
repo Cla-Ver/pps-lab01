@@ -12,10 +12,10 @@ class SimpleBankAccountTest {
 
     private AccountHolder accountHolder;
     private BankAccount bankAccount;
-    private int ACCOUNT_ID = 1;
-    private int WRONG_ACCOUNT_ID = 2;
-    private double INITIAL_BALANCE = 0;
-    private double INITIAL_DEPOSIT = 100;
+    private final int ACCOUNT_ID = 1;
+    private final int WRONG_ACCOUNT_ID = 2;
+    private final double INITIAL_BALANCE = 0;
+    private final double INITIAL_DEPOSIT = 100;
 
 
     @BeforeEach

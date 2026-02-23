@@ -2,7 +2,7 @@ package example.model;
 
 public class SimpleBankAccountWithFee implements BankAccount {
 
-    private SimpleBankAccount bankAccount;
+    private final SimpleBankAccount bankAccount;
     public SimpleBankAccountWithFee(AccountHolder ah, double balance){
         bankAccount = new SimpleBankAccount(ah, balance);
     }

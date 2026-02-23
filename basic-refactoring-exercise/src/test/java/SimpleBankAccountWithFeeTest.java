@@ -9,8 +9,8 @@ public class SimpleBankAccountWithFeeTest {
 
     private AccountHolder accountHolder;
     private SimpleBankAccountWithFee bankAccountWithFee;
-    private double INITIAL_BALANCE = 0;
-    private double INITIAL_DEPOSIT = 100;
+    private final double INITIAL_BALANCE = 0;
+    private final double INITIAL_DEPOSIT = 100;
 
     @BeforeEach
     void init(){
