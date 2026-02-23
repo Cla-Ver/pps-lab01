@@ -33,4 +33,9 @@ public class SmartDoorLockTest {
         lock.lock();
         assertTrue(lock.isLocked());
     }
+    @Test
+    public void lockShouldNotLockWithWrongPin(){
+        lock.unlock(1111);
+        assertTrue(lock.isLocked());
+    }
 }
