@@ -1,7 +1,7 @@
 package tdd;
 
 public class SmartDoorLockImpl implements SmartDoorLock {
-    private final int pin;
+    private int pin;
     private boolean locked = true;
     public SmartDoorLockImpl(int pin) {
         this.pin = pin;
@@ -9,7 +9,10 @@ public class SmartDoorLockImpl implements SmartDoorLock {
 
     @Override
     public void setPin(int pin) {
-
+        if(locked){
+            throw new IllegalStateException("The pin can be changed only when the lock is open");
+        }
+        this.pin = pin;
     }
 
     @Override

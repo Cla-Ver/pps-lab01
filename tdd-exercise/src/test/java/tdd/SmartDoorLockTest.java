@@ -35,7 +35,20 @@ public class SmartDoorLockTest {
     }
     @Test
     public void lockShouldNotLockWithWrongPin(){
-        lock.unlock(1111);
+        final int WRONG_PIN = 1111;
+        lock.unlock(WRONG_PIN);
         assertTrue(lock.isLocked());
     }
+    @Test
+    public void pinCanBeChangedWhileLockIsUnlocked(){
+        lock.unlock(PIN);
+        final int NEW_PIN = 5678;
+        lock.setPin(NEW_PIN);
+        lock.lock();
+        lock.unlock(NEW_PIN);
+        assertFalse(lock.isLocked());
+    }
+
+
+
 }
