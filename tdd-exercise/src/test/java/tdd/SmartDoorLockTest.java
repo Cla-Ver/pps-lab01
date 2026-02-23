@@ -21,4 +21,10 @@ public class SmartDoorLockTest {
         lock.unlock(PIN);
         assertFalse(lock.isLocked());
     }
+    @Test
+    public void lockShouldUnlockWhileUnlocked(){
+        lock.unlock(PIN);
+        lock.unlock(PIN);
+        assertFalse(lock.isLocked());
+    }
 }
