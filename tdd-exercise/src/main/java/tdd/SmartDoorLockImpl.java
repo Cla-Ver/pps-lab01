@@ -19,7 +19,7 @@ public class SmartDoorLockImpl implements SmartDoorLock {
 
     @Override
     public void lock() {
-
+        locked = true;
     }
 
     @Override
