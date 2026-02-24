@@ -6,6 +6,11 @@ import java.util.List;
 public class CircularQueueImpl implements CircularQueue {
     List<Integer> list = new ArrayList<>();
     private final int maxSize;
+    private void checkEmptyList(){
+        if(list.isEmpty()){
+            throw new IllegalStateException("Queue is empty");
+        }
+    }
     public CircularQueueImpl(int maxSize){
         if(maxSize <= 0){
             throw new IllegalArgumentException("List size can only be a positive integer");
@@ -27,9 +32,7 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int dequeue() {
-        if(list.isEmpty()){
-            throw new IllegalStateException("Queue is empty");
-        }
+        checkEmptyList();
         int n = list.getFirst();
         list.remove(0);
         return n;
@@ -42,6 +45,7 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int peek() {
+        checkEmptyList();
         return list.getFirst();
     }
 }

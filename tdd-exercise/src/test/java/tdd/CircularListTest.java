@@ -74,5 +74,9 @@ public class CircularListTest {
         fillQueue();
         assertEquals(QUEUE_SIZE, queue.getMaxSize());
     }
+    @Test
+    public void queueShouldThrowExceptionOnPeekWhenEmpty(){
+        assertThrows(IllegalStateException.class, () -> queue.peek());
+    }
 
 }
