@@ -15,4 +15,11 @@ package tdd;
  */
 public interface CircularQueue {
     boolean isEmpty();
+    /**
+     * Inserts an element in the queue
+     *
+     * @param value The value to insert
+     */
+    void enqueue(int value);
+
 }
