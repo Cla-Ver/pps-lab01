@@ -22,7 +22,10 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int peek() {
-        return 0;
+        if(list.isEmpty()){
+            throw new IllegalStateException("Stack is empty");
+        }
+        return list.getLast();
     }
 
     @Override

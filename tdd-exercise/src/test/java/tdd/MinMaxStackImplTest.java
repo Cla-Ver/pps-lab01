@@ -46,5 +46,14 @@ class MinMaxStackImplTest {
         stack.peek();
         assertFalse(stack.isEmpty());
     }
+    @Test
+    public void stackShouldReturnPeekedValue(){
+        stack.push(1);
+        assertEquals(1, stack.peek());
+    }
+    @Test
+    public void peekShouldThrowExceptionOnEmptyStack(){
+        assertThrows(IllegalStateException.class, () -> stack.peek());
+    }
 
 }
