@@ -64,4 +64,15 @@ public class CircularListTest {
         }
         assertEquals(queue.getMaxSize(), queue.dequeue());
     }
+    @Test
+    public void peekShouldReturnOldestValue(){
+        fillQueue();
+        assertEquals(0, queue.peek());
+    }
+    @Test
+    public void peekShouldNotShrinkQueue(){
+        fillQueue();
+        assertEquals(QUEUE_SIZE, queue.getMaxSize());
+    }
+
 }

@@ -36,4 +36,11 @@ public interface CircularQueue {
      */
     int getMaxSize();
 
+    /**
+     * Returns, but not removes, the oldest element in the queue.
+     *
+     * @return The oldest element in the queue.
+     */
+    int peek();
+
 }

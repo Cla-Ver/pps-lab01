@@ -39,4 +39,9 @@ public class CircularQueueImpl implements CircularQueue {
     public int getMaxSize() {
         return maxSize;
     }
+
+    @Override
+    public int peek() {
+        return list.getFirst();
+    }
 }
