@@ -40,5 +40,24 @@ public class CircularListTest {
         queue.dequeue();
         assertTrue(queue.isEmpty());
     }
-
+    private void fillQueue(){
+        for(int counter = 0; counter < queue.getMaxSize(); counter = counter + 1){
+            queue.enqueue(counter);
+        }
+    }
+    @Test
+    public void queueShouldNotIncreaseSizeIfEnqueueWhenFull(){
+        fillQueue();
+        queue.enqueue(MIN_VALUE);
+        assertEquals(QUEUE_SIZE, queue.getMaxSize());
+    }
+    @Test
+    public void queueShouldReplaceOldestElementIfEnqueueWhileFull(){
+        fillQueue();
+        queue.enqueue(queue.getMaxSize());
+        for(int counter = 0; counter < queue.getMaxSize() - 1; counter++){
+            queue.dequeue();
+        }
+        assertEquals(queue.getMaxSize(), queue.dequeue());
+    }
 }

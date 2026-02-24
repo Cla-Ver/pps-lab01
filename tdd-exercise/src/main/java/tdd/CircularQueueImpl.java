@@ -19,6 +19,9 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public void enqueue(int value) {
+        if(list.size() == maxSize){
+            list.remove(0);
+        }
         list.add(value);
     }
 
@@ -27,5 +30,10 @@ public class CircularQueueImpl implements CircularQueue {
         int n = list.getFirst();
         list.remove(0);
         return n;
+    }
+
+    @Override
+    public int getMaxSize() {
+        return maxSize;
     }
 }

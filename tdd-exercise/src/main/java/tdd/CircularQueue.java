@@ -16,9 +16,9 @@ package tdd;
 public interface CircularQueue {
     boolean isEmpty();
     /**
-     * Inserts an element in the queue
+     * Inserts an element in the queue.
      *
-     * @param value The value to insert
+     * @param value The value to insert.
      */
     void enqueue(int value);
     /**
@@ -27,5 +27,13 @@ public interface CircularQueue {
      * @return The removed value.
      */
     int dequeue();
+
+    /**
+     * Gets the maximum amount of values in the queue.
+     *
+     *
+     * @return The maximum size of the queue.
+     */
+    int getMaxSize();
 
 }
