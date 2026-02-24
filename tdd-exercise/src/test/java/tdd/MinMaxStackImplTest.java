@@ -29,4 +29,10 @@ class MinMaxStackImplTest {
     public void stackShouldThrowExceptionOnGetValueIfStackIsEmpty(){
         assertThrows(IllegalStateException.class, () -> stack.pop());
     }
+    @Test
+    public void stackShouldRemovePoppedValues(){
+        stack.push(1);
+        stack.pop();
+        assertTrue(stack.isEmpty());
+    }
 }
