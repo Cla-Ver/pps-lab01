@@ -14,7 +14,8 @@ public class SmartDoorLockTest {
     private final int NEW_PIN = 5678;
     @BeforeEach
     public void init(){
-        lock = new SmartDoorLockImpl(Optional.of(PIN));
+        lock = new SmartDoorLockImpl();
+        lock.setPin(PIN);
     }
     @Test
     public void lockShouldBeInitiallyUnlocked(){

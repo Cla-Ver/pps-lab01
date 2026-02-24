@@ -1,29 +1,24 @@
 package tdd;
 
-import java.util.Optional;
-
 public class SmartDoorLockImpl implements SmartDoorLock {
-    private Optional<Integer> pin;
+    private Integer pin;
     private boolean locked = false;
     private final int MAX_ATTEMPTS = 3;
     private int attemptsCounter = 0;
-    public SmartDoorLockImpl(Optional<Integer> pin) {
-        this.pin = pin;
-    }
 
     @Override
     public void setPin(int pin) {
         if(locked){
             throw new IllegalStateException("The pin can be changed only when the lock is open");
         }
-        this.pin = Optional.of(pin);
+        this.pin = pin;
     }
     @Override
     public void unlock(int pin) {
-        if(this.pin.isEmpty()){
+        if(this.pin == null){
             throw new IllegalStateException("Pin is not set");
         }
-        if(this.pin.get() != pin || isBlocked()){
+        if(this.pin != pin || isBlocked()){
             attemptsCounter = attemptsCounter + 1;
         }
         else {
@@ -60,6 +55,6 @@ public class SmartDoorLockImpl implements SmartDoorLock {
     public void reset() {
         locked = false;
         attemptsCounter = 0;
-        pin = Optional.empty();
+        pin = null;
     }
 }
