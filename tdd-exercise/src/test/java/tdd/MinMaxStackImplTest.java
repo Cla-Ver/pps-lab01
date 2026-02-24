@@ -35,4 +35,16 @@ class MinMaxStackImplTest {
         stack.pop();
         assertTrue(stack.isEmpty());
     }
+    @Test
+    public void stackShouldReturnPoppedValues(){
+        stack.push(1);
+        assertEquals(1, stack.pop());
+    }
+    @Test
+    public void stackShouldNotRemovePeekedValue(){
+        stack.push(1);
+        stack.peek();
+        assertFalse(stack.isEmpty());
+    }
+
 }
