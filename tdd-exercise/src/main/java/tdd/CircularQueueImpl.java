@@ -5,6 +5,13 @@ import java.util.List;
 
 public class CircularQueueImpl implements CircularQueue {
     List<Integer> list = new ArrayList<>();
+    private final int maxSize;
+    public CircularQueueImpl(int maxSize){
+        if(maxSize <= 0){
+            throw new IllegalArgumentException("List size can only be a positive integer");
+        }
+        this.maxSize = maxSize;
+    }
     @Override
     public boolean isEmpty() {
         return list.isEmpty();
