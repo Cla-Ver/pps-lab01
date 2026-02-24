@@ -6,6 +6,11 @@ import java.util.List;
 
 public class MinMaxStackImpl implements MinMaxStack {
     List<Integer> list = new ArrayList<>();
+    private void checkEmptyList(){
+        if(list.isEmpty()){
+            throw new IllegalStateException("Stack is empty");
+        }
+    }
     @Override
     public void push(int value) {
         list.add(list.size(), value);
@@ -13,9 +18,7 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int pop() {
-        if(list.isEmpty()){
-            throw new IllegalStateException("Stack is empty");
-        }
+        checkEmptyList();
         int n = list.getLast();
         list.remove(list.size() - 1);
         return n;
@@ -23,22 +26,19 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int peek() {
-        if(list.isEmpty()){
-            throw new IllegalStateException("Stack is empty");
-        }
+        checkEmptyList();
         return list.getLast();
     }
 
     @Override
     public int getMin() {
-        if(list.isEmpty()){
-            throw new IllegalStateException("Stack is empty");
-        }
+        checkEmptyList();
         return list.stream().sorted().findFirst().get();
     }
 
     @Override
     public int getMax() {
+        checkEmptyList();
         return list.stream().sorted(Comparator.reverseOrder()).findFirst().get();
     }
 
