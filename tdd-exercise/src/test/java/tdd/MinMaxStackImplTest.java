@@ -20,4 +20,9 @@ class MinMaxStackImplTest {
         stack.push(1);
         assertFalse(stack.isEmpty());
     }
+    @Test
+    public void stackShouldGrowWhenAddingValue(){
+        stack.push(1);
+        assertEquals(1, stack.size());
+    }
 }
