@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MinMaxStackImplTest {
     MinMaxStack stack;
+    private final int FILL_LIST_SIZE = 10;
+
     @BeforeEach
     public void init(){
         stack = new MinMaxStackImpl();
@@ -16,7 +18,7 @@ class MinMaxStackImplTest {
         assertTrue(stack.isEmpty());
     }
     @Test
-    public void stackShouldNotBeEmptyOnElementPush(){
+    public void stackShouldNotBeEmptyOnValuePush(){
         stack.push(1);
         assertFalse(stack.isEmpty());
     }
@@ -54,6 +56,17 @@ class MinMaxStackImplTest {
     @Test
     public void peekShouldThrowExceptionOnEmptyStack(){
         assertThrows(IllegalStateException.class, () -> stack.peek());
+    }
+    @Test
+    public void stackShouldReturnMinimumValue(){
+        for(int counter = 0; counter < FILL_LIST_SIZE; counter++){
+            stack.push(counter);
+        }
+        assertEquals(0, stack.getMin());
+    }
+    @Test
+    public void minShouldThrowExceptionOnEmptyStack(){
+        assertThrows(IllegalStateException.class, () -> stack.getMin());
     }
 
 }
