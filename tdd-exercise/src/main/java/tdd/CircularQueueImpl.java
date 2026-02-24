@@ -21,4 +21,11 @@ public class CircularQueueImpl implements CircularQueue {
     public void enqueue(int value) {
         list.add(value);
     }
+
+    @Override
+    public int dequeue() {
+        int n = list.getFirst();
+        list.remove(0);
+        return n;
+    }
 }

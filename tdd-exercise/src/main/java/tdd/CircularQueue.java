@@ -21,5 +21,11 @@ public interface CircularQueue {
      * @param value The value to insert
      */
     void enqueue(int value);
+    /**
+     * Removes and returns the oldest element in the queue.
+     *
+     * @return The removed value.
+     */
+    int dequeue();
 
 }

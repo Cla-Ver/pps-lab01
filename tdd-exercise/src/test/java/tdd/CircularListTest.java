@@ -1,6 +1,5 @@
 package tdd;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CircularListTest {
     CircularQueue queue;
     final int QUEUE_SIZE = 10;
+    final int MIN_VALUE = 1;
     @BeforeEach
     public void init(){
         queue = new CircularQueueImpl(QUEUE_SIZE);
@@ -26,7 +26,19 @@ public class CircularListTest {
     }
     @Test
     public void queueShouldAllowEnqueue(){
-        queue.enqueue(1);
+        queue.enqueue(MIN_VALUE);
         assertFalse(queue.isEmpty());
     }
+    @Test
+    public void queueShouldReturnDequeuedValue(){
+        queue.enqueue(MIN_VALUE);
+        assertEquals(MIN_VALUE, queue.dequeue());
+    }
+    @Test
+    public void queueShouldShrinkOnDequeue(){
+        queue.enqueue(MIN_VALUE);
+        queue.dequeue();
+        assertTrue(queue.isEmpty());
+    }
+
 }
