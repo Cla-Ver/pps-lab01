@@ -40,6 +40,10 @@ public class CircularListTest {
         queue.dequeue();
         assertTrue(queue.isEmpty());
     }
+    @Test
+    public void queueShouldThrowExceptionOnDequeueWhenEmpty(){
+        assertThrows(IllegalStateException.class, () -> queue.dequeue());
+    }
     private void fillQueue(){
         for(int counter = 0; counter < queue.getMaxSize(); counter = counter + 1){
             queue.enqueue(counter);
