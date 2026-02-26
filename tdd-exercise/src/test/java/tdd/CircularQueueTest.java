@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * The test suite for testing the CircularList implementation
  */
-public class CircularListTest {
+public class CircularQueueTest {
     CircularQueue queue;
     final int QUEUE_SIZE = 10;
     final int MIN_VALUE = 1;
