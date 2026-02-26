@@ -14,6 +14,11 @@ package tdd;
  *   - Refactor
  */
 public interface CircularQueue {
+    /**
+     * Checks if the queue is empty.
+     *
+     * @return Whether the queue has at least one value.
+     */
     boolean isEmpty();
     /**
      * Inserts an element in the queue.
@@ -25,6 +30,7 @@ public interface CircularQueue {
      * Removes and returns the oldest element in the queue.
      *
      * @return The removed value.
+     * @throws IllegalStateException If the queue is empty.
      */
     int dequeue();
 
@@ -40,6 +46,7 @@ public interface CircularQueue {
      * Returns, but not removes, the oldest element in the queue.
      *
      * @return The oldest element in the queue.
+     * @throws IllegalStateException If the queue is empty.
      */
     int peek();
 
