@@ -12,6 +12,8 @@ public class SmartDoorLockTest {
     private final int PIN = 1234;
     private final int WRONG_PIN = 1111;
     private final int NEW_PIN = 5678;
+    private final int SHORT_PIN = 123;
+    private final int LONG_PIN = 12345;
     @BeforeEach
     public void init(){
         lock = new SmartDoorLockImpl();
@@ -20,6 +22,13 @@ public class SmartDoorLockTest {
     @Test
     public void lockShouldBeInitiallyUnlocked(){
         assertFalse(lock.isLocked());
+    }
+    @Test
+    public void pinShouldNotHaveLessThanFourDigits(){
+        assertThrows(IllegalArgumentException.class, () -> lock.setPin(SHORT_PIN));
+    }
+    public void pinShouldNotHaveMoreThanFourDigits(){
+        assertThrows(IllegalArgumentException.class, () -> lock.setPin(LONG_PIN));
     }
     @Test
     public void lockShouldUnlockWithRightPin(){

@@ -5,12 +5,26 @@ public class SmartDoorLockImpl implements SmartDoorLock {
     private boolean locked = false;
     private final int MAX_ATTEMPTS = 3;
     private int attemptsCounter = 0;
+    private final int PIN_DIGITS = 4; //Keeping for readability
+    private int getPinLength(int pin) {
+        if (pin == 0) {
+            return 0;
+        }
+        return 1 + getPinLength(pin / 10);
+    }
+    private void checkValidPinLength(int pin){
+        int pinLength = getPinLength(pin);
+        if(pinLength != PIN_DIGITS){
+            throw new IllegalArgumentException("Pin must be of exactly " + PIN_DIGITS + " digits long");
+        }
+    }
 
     @Override
     public void setPin(int pin) {
         if(locked){
             throw new IllegalStateException("The pin can be changed only when the lock is open");
         }
+        checkValidPinLength(pin);
         this.pin = pin;
     }
     @Override
