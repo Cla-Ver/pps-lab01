@@ -3,8 +3,6 @@ package tdd;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartDoorLockTest {
@@ -20,22 +18,27 @@ public class SmartDoorLockTest {
         lock.setPin(PIN);
     }
     @Test
-    public void lockShouldBeInitiallyUnlocked(){
+    public void lockShouldBeInitiallyUnlocked() {
         assertFalse(lock.isLocked());
     }
+
     @Test
     public void pinShouldNotHaveLessThanFourDigits(){
         assertThrows(IllegalArgumentException.class, () -> lock.setPin(SHORT_PIN));
     }
+
+    @Test
     public void pinShouldNotHaveMoreThanFourDigits(){
         assertThrows(IllegalArgumentException.class, () -> lock.setPin(LONG_PIN));
     }
+
     @Test
     public void lockShouldUnlockWithRightPin(){
         lock.lock();
         lock.unlock(PIN);
         assertFalse(lock.isLocked());
     }
+
     @Test
     public void lockShouldUnlockWhileUnlocked(){
         lock.lock();
@@ -43,6 +46,7 @@ public class SmartDoorLockTest {
         lock.unlock(PIN);
         assertFalse(lock.isLocked());
     }
+
     @Test
     public void lockShouldLockAfterUnlock(){
         lock.lock();
@@ -50,12 +54,14 @@ public class SmartDoorLockTest {
         lock.lock();
         assertTrue(lock.isLocked());
     }
+
     @Test
     public void lockShouldNotUnlockWithWrongPin(){
         lock.lock();
         lock.unlock(WRONG_PIN);
         assertTrue(lock.isLocked());
     }
+
     @Test
     public void pinCanBeChangedWhileLockIsUnlocked(){
         lock.lock();
@@ -65,26 +71,31 @@ public class SmartDoorLockTest {
         lock.unlock(NEW_PIN);
         assertFalse(lock.isLocked());
     }
+
     @Test
     public void lockShouldThrowExceptionIfChangingPinWhenLocked(){
         lock.lock();
         assertThrows(IllegalStateException.class, () -> lock.setPin(NEW_PIN));
     }
+
     @Test
     public void lockShouldInitiallyBeUnblocked(){
         assertFalse(lock.isBlocked());
     }
+
     private void blockLock(){
         for(int counter = 0; counter <= lock.getMaxAttempts(); counter++){
             lock.unlock(WRONG_PIN);
         }
     }
+
     @Test
     public void lockShouldBlockOnTooManyFailedAttempts(){
         lock.lock();
         blockLock();
         assertTrue(lock.isBlocked());
     }
+
     @Test
     public void lockShouldNotUnlockWhileBlocked(){
         lock.lock();
@@ -92,6 +103,7 @@ public class SmartDoorLockTest {
         lock.unlock(PIN);
         assertTrue(lock.isLocked());
     }
+
     @Test
     public void lockShouldUnblockOnReset(){
         lock.lock();
@@ -99,6 +111,7 @@ public class SmartDoorLockTest {
         lock.reset();
         assertFalse(lock.isLocked());
     }
+
     @Test
     public void lockShouldResetAttemptsOnReset(){
         lock.lock();
@@ -106,11 +119,13 @@ public class SmartDoorLockTest {
         lock.reset();
         assertEquals(0, lock.getFailedAttempts());
     }
+
     @Test
     public void lockShouldThrowExceptionOnUnlockAfterResetWithNoPinChosen(){
         lock.reset();
         assertThrows(IllegalStateException.class, () -> lock.unlock(PIN));
     }
+
     @Test
     public void lockShouldUnlockWithNewPinAfterReset(){
         lock.reset();

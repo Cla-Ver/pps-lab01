@@ -12,6 +12,7 @@ public class SmartDoorLockImpl implements SmartDoorLock {
         }
         return 1 + getPinLength(pin / 10);
     }
+
     private void checkValidPinLength(int pin){
         int pinLength = getPinLength(pin);
         if(pinLength != PIN_DIGITS){
@@ -27,6 +28,7 @@ public class SmartDoorLockImpl implements SmartDoorLock {
         checkValidPinLength(pin);
         this.pin = pin;
     }
+
     @Override
     public void unlock(int pin) {
         if(this.pin == null){
@@ -40,6 +42,7 @@ public class SmartDoorLockImpl implements SmartDoorLock {
             attemptsCounter = 0;
         }
     }
+
     @Override
     public void lock() {
         locked = true;
